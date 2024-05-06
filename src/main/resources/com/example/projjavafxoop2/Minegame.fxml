@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.MnegameController">
+   <children>
+      <ImageView fx:id="backImag" fitHeight="700.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@forprojmines.jpg" />
+         </image></ImageView>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" height="709.0" layoutY="-6.0" stroke="BLACK" strokeType="INSIDE" width="1162.0">
+         <fill>
+            <LinearGradient endX="0.6401514429034609" endY="1.0" startX="0.6287879067839998">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.07042166590690613" green="0.06669999659061432" blue="0.28999999165534973" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.07042166590690613" green="0.06669999659061432" blue="0.28999999165534973" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.1318977119784657">
+                     <color>
+                        <Color red="0.1279333382844925" green="0.09200000017881393" blue="0.4000000059604645" opacity="0.879513680934906" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.30451038965302163">
+                     <color>
+                        <Color red="0.30212539434432983" green="0.2766861617565155" blue="0.49473685026168823" opacity="0.7900000214576721" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5214456882119292">
+                     <color>
+                        <Color red="0.295960009098053" green="0.274399995803833" blue="0.49000000953674316" opacity="0.7900000214576721" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.7065095361586187">
+                     <color>
+                        <Color red="0.295960009098053" green="0.274399995803833" blue="0.49000000953674316" opacity="0.7900000214576721" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.9434724091520861">
+                     <color>
+                        <Color red="0.1279333382844925" green="0.09200000017881393" blue="0.4000000059604645" opacity="0.8115501999855042" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.07313840091228485" green="0.06549707800149918" blue="0.2947368323802948" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fx:id="Logo" fitHeight="44.0" fitWidth="40.0" layoutX="159.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@diamond.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="LogoTitle" layoutX="217.0" layoutY="30.0" text="MINES" textFill="#ffe08b">
+         <font>
+            <Font name="Cooper Black" size="20.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#ffffff45" height="24.0" layoutX="774.0" layoutY="32.0" stroke="TRANSPARENT" strokeType="INSIDE" width="229.0" />
+      <Label fx:id="moneylabel" layoutX="784.0" layoutY="32.0" text="100" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="40.0" fitWidth="40.0" layoutX="722.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dollar.png" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#242846" height="475.0" layoutX="131.0" layoutY="102.0" stroke="#ffffff00" strokeType="INSIDE" width="901.0" />
+      <Line endX="1061.0" endY="7.62939453125E-6" layoutX="101.0" layoutY="78.0" startX="-100.0" stroke="#ffffff52" />
+      <Rectangle fx:id="Betinput" arcHeight="20.0" arcWidth="20.0" fill="#130d28" height="475.0" layoutX="130.0" layoutY="102.0" stroke="TRANSPARENT" strokeType="INSIDE" width="394.0" />
+      <Label layoutX="143.0" layoutY="117.0" text="Bet Amount (minumum 10)" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="142.0" layoutY="200.0" text="Bombs (1-16)" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="12.0" />
+         </font>
+      </Label>
+      <TextField fx:id="BombsInput" layoutX="144.0" layoutY="228.0" prefHeight="38.0" prefWidth="70.0" />
+      <Button fx:id="PlayButton" layoutX="147.0" layoutY="298.0" mnemonicParsing="false" prefHeight="47.0" prefWidth="362.0" textFill="WHITE" />
+      <Label layoutX="293.0" layoutY="312.0" text="Play Game">
+         <font>
+            <Font name="Impact" size="16.0" />
+         </font>
+      </Label>
+      <TextField fx:id="BetInp" layoutX="144.0" layoutY="147.0" prefHeight="38.0" prefWidth="138.0" />
+      <Rectangle fx:id="rectMinesLeft" arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="160.0" layoutX="231.0" layoutY="376.0" opacity="0.0" stroke="WHITE" strokeType="INSIDE" width="193.0" />
+      <Label fx:id="LabelMinesleft" layoutX="275.0" layoutY="400.0" opacity="0.0" text="MINES LEFT" textFill="WHITE">
+         <font>
+            <Font name="Impact" size="25.0" />
+         </font>
+      </Label>
+      <Label fx:id="minesleftnum" layoutX="300.0" layoutY="447.0" opacity="0.0" text="24" textFill="#6be4ca">
+         <font>
+            <Font name="Impact" size="53.0" />
+         </font>
+      </Label>
+      <Label fx:id="BetInvalid" layoutX="300.0" layoutY="157.0" opacity="0.0" text="Invalid Amount" textFill="#ea6969" />
+      <Label fx:id="BombsInvalid" layoutX="231.0" layoutY="239.0" opacity="0.0" text="Invalid Amount" textFill="#ff7c77" />
+      <Pane fx:id="MineBox1" layoutX="589.0" layoutY="144.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox2" layoutX="689.0" layoutY="144.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox3" layoutX="789.0" layoutY="144.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox4" layoutX="889.0" layoutY="144.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox5" layoutX="589.0" layoutY="244.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox6" layoutX="689.0" layoutY="244.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox7" layoutX="789.0" layoutY="244.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox8" layoutX="889.0" layoutY="244.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox9" layoutX="589.0" layoutY="344.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox10" layoutX="689.0" layoutY="344.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox11" layoutX="789.0" layoutY="344.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox12" layoutX="889.0" layoutY="344.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox13" layoutX="589.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox14" layoutX="689.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox15" layoutX="789.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="MineBox16" layoutX="889.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
+   </children>
+</AnchorPane>
