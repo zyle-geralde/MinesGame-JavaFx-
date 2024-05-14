@@ -1,5 +1,6 @@
 package com.example.projjavafxoop2;
 
+import com.almasb.fxgl.dsl.components.view.TextViewComponent;
 import javafx.animation.KeyFrame;
 import javafx.animation.KeyValue;
 import javafx.animation.Timeline;
@@ -8,6 +9,8 @@ import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Node;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -16,12 +19,15 @@ import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+
+import java.io.IOException;
 import java.net.Inet4Address;
 import java.util.ArrayList;
 import java.util.Random;
@@ -37,11 +43,13 @@ public class MinegameApplication extends Application{
     ArrayList<Integer> minesindicator = new ArrayList<>();
 
     ArrayList<Boolean> isPaneClicked = new ArrayList();
+    Scene initialscene;
+
 
     @Override
     public void start(Stage stage) throws Exception {
-        FXMLLoader fxmlLoader = new FXMLLoader(MinegameApplication.class.getResource("Minegame.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 1150, 700);
+        Parent root = FXMLLoader.load(getClass().getResource("Minegame.fxml"));
+        Scene scene = new Scene(root, 1150, 700);
         stage.setTitle("Mine Game");
         stage.setScene(scene);
         stage.show();
@@ -121,7 +129,7 @@ public class MinegameApplication extends Application{
         playButton.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-
+                System.out.println("Clicked");
                 //Thread for checking textfields
                 Label betinv = (Label) scene.lookup("#BetInvalid");
                 Label betinv2 = (Label) scene.lookup("#BombsInvalid");
@@ -213,90 +221,6 @@ public class MinegameApplication extends Application{
                         isPaneClicked.add(false);
                     }
 
-                    //adding event listeners for each MineBox
-                    for(Pane minesPane: gridcol){
-                        minesPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                            @Override
-                            public void handle(MouseEvent mouseEvent) {
-                                int indmines = gridcol.indexOf(minesPane);
-                                if(isPaneClicked.get(indmines) == true){
-                                    return;
-                                }
-                                if(minesindicator.get(indmines) == 0){
-                                    minesPane.setOpacity(0);
-                                    Image img = new Image("file:src/main/resources/com/example/projjavafxoop2/diamond.png");
-                                    ImageView imgview = new ImageView();
-                                    imgview.setImage(img);
-                                    imgview.setFitHeight(50);
-                                    imgview.setFitWidth(50);
-                                    imgview.setOpacity(0);
-
-                                    VBox vbox = new VBox();
-                                    vbox.getChildren().add(imgview);
-                                    vbox.setAlignment(Pos.CENTER);
-                                    vbox.setMinWidth(90);
-                                    vbox.setMinHeight(90);
-
-                                    minesPane.getChildren().add(vbox);
-                                    minesPane.setStyle("-fx-background-color: rgba(255, 224, 139, 0.5); ");
-
-                                    Timeline timeline = new Timeline();
-                                    timeline.getKeyFrames().add(
-                                            new KeyFrame(Duration.seconds(0.2), new KeyValue(minesPane.opacityProperty(), 1))
-                                    );
-                                    timeline.play();
-
-                                    Timeline timeline2 = new Timeline();
-                                    timeline2.getKeyFrames().add(
-                                            new KeyFrame(Duration.seconds(0.2), new KeyValue(imgview.opacityProperty(), 1))
-                                    );
-                                    timeline2.play();
-
-                                    Label minesleftnum = (Label) scene.lookup("#minesleftnum");
-                                    int newnum = Integer.parseInt(minesleftnum.getText().toString()) - 1;
-                                    minesleftnum.setText(newnum+"");
-
-                                    if(minesleftnum.getText().toString().equals("0")){
-                                        System.out.println("WIN");
-                                    }
-                                }
-                                else{
-                                    minesPane.setOpacity(0);
-                                    Image img = new Image("file:src/main/resources/com/example/projjavafxoop2/bomb.png");
-                                    ImageView imgview = new ImageView();
-                                    imgview.setImage(img);
-                                    imgview.setFitHeight(50);
-                                    imgview.setFitWidth(50);
-
-
-                                    VBox vbox = new VBox();
-                                    vbox.getChildren().add(imgview);
-                                    vbox.setAlignment(Pos.CENTER);
-                                    vbox.setMinWidth(90);
-                                    vbox.setMinHeight(90);
-                                    imgview.setOpacity(0);
-
-                                    minesPane.getChildren().add(vbox);
-                                    minesPane.setStyle("-fx-background-color: rgba(50,50,50, 0.3);");
-
-                                    Timeline timeline = new Timeline();
-                                    timeline.getKeyFrames().add(
-                                            new KeyFrame(Duration.seconds(0.2), new KeyValue(minesPane.opacityProperty(), 1))
-                                    );
-                                    timeline.play();
-
-                                    Timeline timeline2 = new Timeline();
-                                    timeline2.getKeyFrames().add(
-                                            new KeyFrame(Duration.seconds(0.2), new KeyValue(imgview.opacityProperty(), 1))
-                                    );
-                                    timeline2.play();
-                                    System.out.println("LOSE");
-
-                                }
-                                isPaneClicked.set(indmines,true);
-                            }
-                        });
-                    }
 
                 }
                 else{
@@ -305,7 +229,277 @@ public class MinegameApplication extends Application{
 
             }
         });
+
+        try{
+            //adding event listeners for each MineBox
+            for(Pane minesPane: gridcol){
+                minesPane.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent mouseEvent) {
+                        try{
+                            int indmines = gridcol.indexOf(minesPane);
+                            if(isPaneClicked.get(indmines) == true){
+                                return;
+                            }
+                            if(minesindicator.get(indmines) == 0){
+                                minesPane.setOpacity(0);
+                                Image img = new Image("file:src/main/resources/com/example/projjavafxoop2/diamond.png");
+                                ImageView imgview = new ImageView();
+                                imgview.setImage(img);
+                                imgview.setFitHeight(50);
+                                imgview.setFitWidth(50);
+                                imgview.setOpacity(0);
+
+                                VBox vbox = new VBox();
+                                vbox.getChildren().add(imgview);
+                                vbox.setAlignment(Pos.CENTER);
+                                vbox.setMinWidth(90);
+                                vbox.setMinHeight(90);
+
+                                minesPane.getChildren().add(vbox);
+                                minesPane.setStyle("-fx-background-color: rgba(255, 224, 139, 0.5); ");
+
+                                Timeline timeline = new Timeline();
+                                timeline.getKeyFrames().add(
+                                        new KeyFrame(Duration.seconds(0.2), new KeyValue(minesPane.opacityProperty(), 1))
+                                );
+                                timeline.play();
+
+                                Timeline timeline2 = new Timeline();
+                                timeline2.getKeyFrames().add(
+                                        new KeyFrame(Duration.seconds(0.2), new KeyValue(imgview.opacityProperty(), 1))
+                                );
+                                timeline2.play();
+
+                                Label minesleftnum = (Label) scene.lookup("#minesleftnum");
+                                int newnum = Integer.parseInt(minesleftnum.getText().toString()) - 1;
+                                minesleftnum.setText(newnum+"");
+
+                                if(minesleftnum.getText().toString().equals("0")){
+                                    isPaneClicked.set(indmines,true);
+
+                                    int duration = 1100;
+                                    int secme = 1;
+                                    for(int inloop = 0; inloop<gridcol.size(); inloop++){
+                                        gridcol.get(inloop).setDisable(true);
+                                        if(isPaneClicked.get(inloop) == false){
+                                            Image imgin;
+                                            if(minesindicator.get(inloop) == 0){
+                                                imgin = new Image("file:src/main/resources/com/example/projjavafxoop2/diamond.png");
+                                            }
+                                            else{
+                                                imgin = new Image("file:src/main/resources/com/example/projjavafxoop2/bomb.png");
+                                            }
+
+                                            Timeline timelinejj = new Timeline();
+                                            timelinejj.getKeyFrames().addAll(
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).opacityProperty(), 0)),
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).styleProperty(), "-fx-background-color: rgba(50,50,50, 0.3);"))
+                                            );
+                                            timelinejj.play();
+
+
+                                            ImageView imgviewin = new ImageView();
+                                            imgviewin.setImage(imgin);
+                                            imgviewin.setFitHeight(50);
+                                            imgviewin.setFitWidth(50);
+                                            imgviewin.setOpacity(0);
+
+                                            VBox vboxin = new VBox();
+                                            vboxin.getChildren().add(imgviewin);
+                                            vboxin.setAlignment(Pos.CENTER);
+                                            vboxin.setMinWidth(90);
+                                            vboxin.setMinHeight(90);
+
+                                            gridcol.get(inloop).getChildren().add(vboxin);
+
+                                            Timeline timelinein = new Timeline();
+                                            timelinein.setDelay(Duration.millis(duration));
+                                            timelinein.getKeyFrames().add(
+                                                    new KeyFrame(Duration.seconds(1), new KeyValue(gridcol.get(inloop).opacityProperty(), 1))
+                                            );
+                                            timelinein.play();
+
+                                            Timeline timelinein2 = new Timeline();
+                                            timelinein2.setDelay(Duration.millis(duration));
+                                            timelinein2.getKeyFrames().add(
+                                                    new KeyFrame(Duration.seconds(1), new KeyValue(imgviewin.opacityProperty(), 1))
+                                            );
+                                            timelinein2.play();
+                                            duration+=50;
+                                        }
+                                    }
+
+
+                                    Pane Winview = (Pane) scene.lookup("#Winview");
+                                    Winview.setOpacity(0);
+                                    Winview.setVisible(true);
+                                    Timeline timelinejjj = new Timeline();
+                                    timelinejjj.setDelay(Duration.millis(2600));
+                                    timelinejjj.getKeyFrames().addAll(
+                                            new KeyFrame(Duration.seconds(0.7), new KeyValue(Winview.opacityProperty(), 1))
+                                    );
+                                    timelinejjj.play();
+
+                                    Label totalBalance = (Label) scene.lookup("#totalBalance");
+                                    TextField Betinp = (TextField) scene.lookup("#BetInp");
+                                    double Betamount = Double.parseDouble(Betinp.getText().toString());
+                                    double BombsAmount = Double.parseDouble(BombsInput.getText().toString());
+
+
+                                    int starter = 9;
+                                    totalBalance.setText(String.format("%.2f",Betamount*(BombsAmount+starter)));
+
+                                }
+                            }
+                            else{
+                                minesPane.setOpacity(0);
+                                Image img = new Image("file:src/main/resources/com/example/projjavafxoop2/bomb.png");
+                                ImageView imgview = new ImageView();
+                                imgview.setImage(img);
+                                imgview.setFitHeight(50);
+                                imgview.setFitWidth(50);
+
+
+                                VBox vbox = new VBox();
+                                vbox.getChildren().add(imgview);
+                                vbox.setAlignment(Pos.CENTER);
+                                vbox.setMinWidth(90);
+                                vbox.setMinHeight(90);
+                                imgview.setOpacity(0);
+
+                                minesPane.getChildren().add(vbox);
+                                minesPane.setStyle("-fx-background-color: rgba(50,50,50, 0.3);");
+
+                                Timeline timeline = new Timeline();
+                                timeline.getKeyFrames().add(
+                                        new KeyFrame(Duration.seconds(0.2), new KeyValue(minesPane.opacityProperty(), 1))
+                                );
+                                timeline.play();
+
+                                Timeline timeline2 = new Timeline();
+                                timeline2.getKeyFrames().add(
+                                        new KeyFrame(Duration.seconds(0.2), new KeyValue(imgview.opacityProperty(), 1))
+                                );
+                                timeline2.play();
+
+
+                                //Lose Pane
+                                isPaneClicked.set(indmines,true);
+                                int duration = 1100;
+                                int secme = 1;
+                                for(int inloop = 0; inloop<gridcol.size(); inloop++){
+                                    gridcol.get(inloop).setDisable(true);
+                                    if(isPaneClicked.get(inloop) == false){
+                                        Image imgin;
+                                        if(minesindicator.get(inloop) == 0){
+                                            imgin = new Image("file:src/main/resources/com/example/projjavafxoop2/diamond.png");
+                                            Timeline timelinejj = new Timeline();
+                                            timelinejj.getKeyFrames().addAll(
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).opacityProperty(), 0)),
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).styleProperty(), "-fx-background-color: rgba(255, 224, 139, 0.5);"))
+                                            );
+                                            timelinejj.play();
+                                        }
+                                        else{
+                                            imgin = new Image("file:src/main/resources/com/example/projjavafxoop2/bomb.png");
+                                            Timeline timelinejj = new Timeline();
+                                            timelinejj.getKeyFrames().addAll(
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).opacityProperty(), 0)),
+                                                    new KeyFrame(Duration.seconds(0.5), new KeyValue(gridcol.get(inloop).styleProperty(), "-fx-background-color: rgba(50,50,50, 0.3);"))
+                                            );
+                                            timelinejj.play();
+                                        }
+
+
+
+                                        ImageView imgviewin = new ImageView();
+                                        imgviewin.setImage(imgin);
+                                        imgviewin.setFitHeight(50);
+                                        imgviewin.setFitWidth(50);
+                                        imgviewin.setOpacity(0);
+
+                                        VBox vboxin = new VBox();
+                                        vboxin.getChildren().add(imgviewin);
+                                        vboxin.setAlignment(Pos.CENTER);
+                                        vboxin.setMinWidth(90);
+                                        vboxin.setMinHeight(90);
+
+                                        gridcol.get(inloop).getChildren().add(vboxin);
+
+                                        Timeline timelinein = new Timeline();
+                                        timelinein.setDelay(Duration.millis(duration));
+                                        timelinein.getKeyFrames().add(
+                                                new KeyFrame(Duration.seconds(1), new KeyValue(gridcol.get(inloop).opacityProperty(), 1))
+                                        );
+                                        timelinein.play();
+
+                                        Timeline timelinein2 = new Timeline();
+                                        timelinein2.setDelay(Duration.millis(duration));
+                                        timelinein2.getKeyFrames().add(
+                                                new KeyFrame(Duration.seconds(1), new KeyValue(imgviewin.opacityProperty(), 1))
+                                        );
+                                        timelinein2.play();
+                                        duration+=50;
+                                    }
+                                }
+
+
+                                Pane Winview = (Pane) scene.lookup("#Winview1");
+                                Winview.setOpacity(0);
+                                Winview.setVisible(true);
+                                Timeline timelinejjj = new Timeline();
+                                timelinejjj.setDelay(Duration.millis(2900));
+                                timelinejjj.getKeyFrames().addAll(
+                                        new KeyFrame(Duration.seconds(0.7), new KeyValue(Winview.opacityProperty(), 1))
+                                );
+                                timelinejjj.play();
+
+
+                            }
+                            isPaneClicked.set(indmines,true);
+                        }
+                        catch (Exception e){
+                            System.out.println("Dont click");
+                        }
+
+                    }
+                });
+            }
+        }
+        catch (Exception e){
+            System.out.println("Dont click");
+        }
+
+
+        Label LabelCheck = (Label) scene.lookup("#LabelCheck");
+        LabelCheck.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                stage.close();
+                try {
+                    new MinegameApplication().start(new Stage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Label LabelCheck1 = (Label) scene.lookup("#LabelCheck1");
+        LabelCheck1.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                stage.close();
+                try {
+                    new MinegameApplication().start(new Stage());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
+
 
     public static void main(String[] args) {
         launch();

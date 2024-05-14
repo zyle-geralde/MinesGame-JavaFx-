@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.DashBoardSample">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0f141f" height="700.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1150.0" />
+      <Rectangle arcHeight="50.0" arcWidth="50.0" fill="#211f34" height="657.0" layoutX="25.0" layoutY="18.0" stroke="TRANSPARENT" strokeType="INSIDE" width="257.0" />
+      <ImageView fitHeight="71.0" fitWidth="117.0" layoutX="14.0" layoutY="43.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@Logo.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="103.0" fitWidth="175.0" layoutX="95.0" layoutY="36.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@casino_++-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="44.0" layoutY="127.0" prefHeight="50.0" prefWidth="217.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@slot-machine.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="74.0" layoutY="17.0" text="Slot Machine" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Pane layoutX="44.0" layoutY="187.0" prefHeight="50.0" prefWidth="217.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@cards.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="74.0" layoutY="17.0" text="Cards" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Pane layoutX="45.0" layoutY="252.0" prefHeight="50.0" prefWidth="217.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@puzzle.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="74.0" layoutY="17.0" text="Color Game" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Pane layoutX="45.0" layoutY="325.0" prefHeight="50.0" prefWidth="217.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@diamond.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="74.0" layoutY="17.0" text="Mines" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" height="185.0" layoutX="66.0" layoutY="480.0" stroke="TRANSPARENT" strokeType="INSIDE" visible="false" width="175.0">
+         <fill>
+            <LinearGradient endX="0.48484848846088757" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.47111111879348755" blue="0.24444444477558136" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.9894737005233765" green="0.5815906524658203" blue="0.4067836403846741" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.5006729475100944">
+                     <color>
+                        <Color red="1.0" green="0.30000001192092896" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.6526315808296204" green="0.1849122792482376" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <ImageView fitHeight="92.0" fitWidth="99.0" layoutX="98.0" layoutY="545.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@safety-box.png" />
+         </image>
+      </ImageView>
+      <Pane layoutX="44.0" layoutY="388.0" prefHeight="50.0" prefWidth="217.0">
+         <children>
+            <AnchorPane prefHeight="50.0" prefWidth="218.0">
+               <children>
+                  <ImageView fitHeight="37.0" fitWidth="30.0" layoutX="23.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@turn-off.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="74.0" layoutY="17.0" text="Log Out" textFill="WHITE">
+                     <font>
+                        <Font name="Arial Bold" size="12.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Rectangle arcHeight="40.0" arcWidth="40.0" fill="#0f141f" height="42.0" layoutX="911.0" layoutY="22.0" stroke="#ffffff62" strokeType="INSIDE" width="175.0">
+         <effect>
+            <InnerShadow choke="0.02" height="65.5" offsetX="5.0" offsetY="10.0" radius="21.14" width="21.06">
+               <color>
+                  <Color red="0.3684210479259491" green="0.3561403453350067" blue="0.3561403453350067" />
+               </color>
+            </InnerShadow>
+         </effect>
+      </Rectangle>
+      <ImageView fitHeight="30.0" fitWidth="28.0" layoutX="917.0" layoutY="29.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@dollar.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="963.0" layoutY="35.0" prefHeight="16.0" prefWidth="86.0" text="10000000000" textFill="WHITE">
+         <font>
+            <Font name="Arial Bold" size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="948.0" layoutY="31.0" text="\$" textFill="WHITE">
+         <font>
+            <Font name="Arial Black" size="16.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="18.0" fitWidth="28.0" layoutX="1058.0" layoutY="34.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@add.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="Webbanner" fitHeight="185.0" fitWidth="682.0" layoutX="367.0" layoutY="95.0" pickOnBounds="true" styleClass="rounded-image">
+         <image>
+            <Image url="@webbanner.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="50.0" arcWidth="50.0" height="185.0" layoutX="367.0" layoutY="95.0" stroke="TRANSPARENT" strokeType="INSIDE" width="682.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.05098039284348488" green="0.06666667014360428" blue="0.10196078568696976" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.006729475100942127">
+                     <color>
+                        <Color red="0.05098039284348488" green="0.06666667014360428" blue="0.10196078568696976" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.31513967764172923">
+                     <color>
+                        <Color red="0.058800000697374344" green="0.07818000018596649" blue="0.11999999731779099" opacity="0.44999998807907104" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6366083445491252">
+                     <color>
+                        <Color red="0.058800000697374344" green="0.07818000018596649" blue="0.11999999731779099" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.6541049798115747">
+                     <color>
+                        <Color red="0.03779999911785126" green="0.1151999980211258" blue="0.27000001072883606" opacity="0.0" />
+                     </color>
+                  </Stop>
+                  <Stop offset="0.8490857761875059">
+                     <color>
+                        <Color red="0.05882352963089943" green="0.0784313753247261" blue="0.12156862765550613" opacity="0.44999998807907104" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="0.05098039284348488" green="0.06666667014360428" blue="0.10196078568696976" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffff12" height="170.0" layoutX="453.0" layoutY="303.0" stroke="#ffffff62" strokeType="INSIDE" width="224.0" />
+      <ImageView fx:id="game1" fitHeight="152.0" fitWidth="205.0" layoutX="462.0" layoutY="312.0" pickOnBounds="true">
+         <image>
+            <Image url="@SlotMachineCover.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffff12" height="170.0" layoutX="738.0" layoutY="303.0" stroke="#ffffff62" strokeType="INSIDE" width="224.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffff12" height="170.0" layoutX="453.0" layoutY="488.0" stroke="#ffffff62" strokeType="INSIDE" width="224.0" />
+      <Rectangle arcHeight="15.0" arcWidth="15.0" fill="#ffffff12" height="170.0" layoutX="739.0" layoutY="488.0" stroke="#ffffff62" strokeType="INSIDE" width="224.0" />
+      <ImageView fx:id="game3" fitHeight="152.0" fitWidth="205.0" layoutX="462.0" layoutY="497.0" pickOnBounds="true">
+         <image>
+            <Image url="@ColorGameCov.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="game2" fitHeight="152.0" fitWidth="205.0" layoutX="748.0" layoutY="312.0" pickOnBounds="true">
+         <image>
+            <Image url="@CardGameCov.jpg" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="game4" fitHeight="152.0" fitWidth="205.0" layoutX="748.0" layoutY="497.0" pickOnBounds="true">
+         <image>
+            <Image url="@MinesGameCov.jpg" />
+         </image>
+      </ImageView>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="152.0" layoutX="462.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" width="205.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.19696966807047528" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.12999999523162842" blue="0.7390000224113464" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="152.0" layoutX="748.0" layoutY="312.0" stroke="TRANSPARENT" strokeType="INSIDE" width="205.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.1818182396166252" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.6526315808296204" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="152.0" layoutX="462.0" layoutY="497.0" stroke="TRANSPARENT" strokeType="INSIDE" width="205.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.1818182396166252" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="1.0" green="0.7062963247299194" blue="0.3222222328186035" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Rectangle arcHeight="10.0" arcWidth="10.0" height="152.0" layoutX="749.0" layoutY="497.0" stroke="TRANSPARENT" strokeType="INSIDE" width="205.0">
+         <fill>
+            <LinearGradient endX="1.0" endY="0.1818182396166252" startX="1.0" startY="1.0">
+               <stops>
+                  <Stop>
+                     <color>
+                        <Color red="0.26253411173820496" green="0.8767693042755127" blue="0.9578947424888611" />
+                     </color>
+                  </Stop>
+                  <Stop offset="1.0">
+                     <color>
+                        <Color red="1.0" green="1.0" blue="1.0" opacity="0.0" />
+                     </color>
+                  </Stop>
+               </stops>
+            </LinearGradient>
+         </fill>
+      </Rectangle>
+      <Label layoutX="479.0" layoutY="413.0" text="SLOT MACHINE" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="805.0" layoutY="413.0" text="3 BALLS" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="489.0" layoutY="591.0" text="COLOR GAME" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+      <Label layoutX="814.0" layoutY="591.0" text="MINES" textFill="WHITE">
+         <font>
+            <Font name="Cooper Black" size="21.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

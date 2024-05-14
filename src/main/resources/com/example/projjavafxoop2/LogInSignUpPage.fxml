@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.LogInSignUpApplication">
+   <children>
+      <MediaView fx:id="BackCoverVid" fitHeight="800.0" fitWidth="1250.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffffff7b" height="120.0" layoutX="320.0" layoutY="174.0" stroke="TRANSPARENT" strokeType="INSIDE" width="476.0" />
+      <ImageView fitHeight="444.0" fitWidth="737.0" layoutX="207.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CASINO__1_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <TextField fx:id="unametext" layoutX="625.0" layoutY="372.0" prefHeight="55.0" prefWidth="250.0" />
+      <PasswordField fx:id="passwordtext" layoutX="625.0" layoutY="474.0" prefHeight="55.0" prefWidth="250.0" />
+      <ImageView fitHeight="182.0" fitWidth="308.0" layoutX="250.0" layoutY="302.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CASINO__2_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="182.0" fitWidth="308.0" layoutX="250.0" layoutY="400.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CASINO__3_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="ErrorShow" layoutX="625.0" layoutY="549.0" opacity="0.0" prefHeight="23.0" prefWidth="250.0" text="Invalid Inputs" textFill="#fa4646">
+         <font>
+            <Font name="Calibri" size="15.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="LogInBut" fitHeight="78.0" fitWidth="139.0" layoutX="412.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CASINO__4_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="SignUpBut" fitHeight="78.0" fitWidth="147.0" layoutX="619.0" layoutY="573.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@CASINO__5_-removebg-preview.png" />
+         </image>
+      </ImageView>
+      <MediaView fx:id="IntroPlay" fitHeight="700.0" fitWidth="1150.0" />
+      <Label fx:id="skipvid" layoutX="40.0" layoutY="41.0" text="Skip" textFill="RED">
+         <font>
+            <Font name="Cooper Black" size="19.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

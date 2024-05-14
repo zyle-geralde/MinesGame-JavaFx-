@@ -14,7 +14,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.MnegameController">
+<AnchorPane fx:id="parentme" prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.MnegameController">
    <children>
       <ImageView fx:id="backImag" fitHeight="700.0" fitWidth="1200.0" pickOnBounds="true" preserveRatio="true">
          <image>
@@ -139,5 +139,104 @@
       <Pane fx:id="MineBox14" layoutX="689.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
       <Pane fx:id="MineBox15" layoutX="789.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
       <Pane fx:id="MineBox16" layoutX="889.0" layoutY="444.0" prefHeight="90.0" prefWidth="90.0" />
+      <Pane fx:id="Winview" prefHeight="704.0" prefWidth="1163.0" visible="false">
+         <children>
+            <AnchorPane prefHeight="709.0" prefWidth="1163.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000006b" height="709.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1163.0" />
+                  <ImageView fitHeight="400.0" fitWidth="400.0" layoutX="349.0" layoutY="136.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@BigWin.png" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="ButtonCheck" arcHeight="20.0" arcWidth="20.0" height="77.0" layoutX="443.0" layoutY="536.0" stroke="TRANSPARENT" strokeType="INSIDE" width="229.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.6421052813529968" green="0.1926315724849701" blue="0.1926315724849701" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.5639300134589502">
+                                 <color>
+                                    <Color red="1.0" green="0.6666666865348816" blue="0.6666666865348816" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.6399999856948853" green="0.19200000166893005" blue="0.19200000166893005" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Label fx:id="LabelCheck" alignment="CENTER" layoutX="444.0" layoutY="536.0" onMouseClicked="#SwitchRelod" prefHeight="77.0" prefWidth="229.0" text="Checkout">
+                     <font>
+                        <Font name="Cooper Black" size="29.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="382.0" layoutY="114.0" text="Total Gained: " textFill="WHITE">
+                     <font>
+                        <Font name="Cooper Black" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="totalBalance" layoutX="591.0" layoutY="113.0" text="200" textFill="#6cfca4">
+                     <font>
+                        <Font name="Cooper Black" size="26.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="566.0" layoutY="112.0" text="+" textFill="#6cfca4">
+                     <font>
+                        <Font name="Cooper Black" size="28.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
+      <Pane fx:id="Winview1" layoutX="10.0" layoutY="10.0" prefHeight="704.0" prefWidth="1163.0" visible="false">
+         <children>
+            <AnchorPane prefHeight="709.0" prefWidth="1163.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0000006b" height="709.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1163.0" />
+                  <ImageView fitHeight="700.0" fitWidth="1181.0" layoutX="-11.0" layoutY="-16.0" pickOnBounds="true">
+                     <image>
+                        <Image url="@4047734_2128465.jpg" />
+                     </image>
+                  </ImageView>
+                  <Rectangle fx:id="ButtonCheck1" arcHeight="20.0" arcWidth="20.0" height="77.0" layoutX="411.0" layoutY="452.0" stroke="TRANSPARENT" strokeType="INSIDE" width="354.0">
+                     <fill>
+                        <LinearGradient endX="1.0" endY="1.0">
+                           <stops>
+                              <Stop>
+                                 <color>
+                                    <Color red="0.6421052813529968" green="0.1926315724849701" blue="0.1926315724849701" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="0.5639300134589502">
+                                 <color>
+                                    <Color red="1.0" green="0.6666666865348816" blue="0.6666666865348816" />
+                                 </color>
+                              </Stop>
+                              <Stop offset="1.0">
+                                 <color>
+                                    <Color red="0.6399999856948853" green="0.19200000166893005" blue="0.19200000166893005" />
+                                 </color>
+                              </Stop>
+                           </stops>
+                        </LinearGradient>
+                     </fill>
+                  </Rectangle>
+                  <Label fx:id="LabelCheck1" alignment="CENTER" layoutX="454.0" layoutY="471.0" onMouseClicked="#SwitchRelod" prefHeight="38.0" prefWidth="281.0" text="Play Mines Again">
+                     <font>
+                        <Font name="Cooper Black" size="29.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>
