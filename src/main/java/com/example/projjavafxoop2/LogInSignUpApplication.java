@@ -41,24 +41,20 @@ public class LogInSignUpApplication extends Application {
 
         String mediaSource = getClass().getResource("/com/example/projjavafxoop2/IntroVidNew.mp4").toString();
 
-// Create a MediaPlayer
         Media media = new Media(mediaSource);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
 
-// Link MediaPlayer to MediaView
         mediaView.setMediaPlayer(mediaPlayer);
 
-// Play the video
         mediaPlayer.play();
 
-//Coverme
         MediaView BackView = (MediaView) scene.lookup("#BackCoverVid");
         BackView.setVisible(false);
 
         mediaPlayer.setOnEndOfMedia(() -> {
             Label skipvid = (Label) scene.lookup("#skipvid");
             skipvid.setOpacity(0);
-            mediaPlayer.stop(); // Stop the first video
+            //mediaPlayer.stop(); // Stop the first video
             mediaView.setOpacity(0);
             mediaView.setVisible(false);
 
@@ -86,9 +82,6 @@ public class LogInSignUpApplication extends Application {
             }
 
         });
-
-
-
 
 
         Label skipvid = (Label) scene.lookup("#skipvid");
