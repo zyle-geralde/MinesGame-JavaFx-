@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.DashBoardSample">
+<AnchorPane prefHeight="700.0" prefWidth="1150.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.projjavafxoop2.DashBoardPackage.DashBoardSample">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0f141f" height="700.0" stroke="TRANSPARENT" strokeType="INSIDE" width="1150.0" />
       <AnchorPane fx:id="sideBar" layoutX="24.0" layoutY="18.0" translateX="-280.0">
@@ -295,7 +296,7 @@
                   <Image url="@dollar.png" />
                </image>
             </ImageView>
-            <Label layoutX="52.0" layoutY="13.0" prefHeight="16.0" prefWidth="86.0" text="100" textFill="WHITE">
+            <Label fx:id="amountLabel" layoutX="52.0" layoutY="13.0" prefHeight="16.0" prefWidth="86.0" text="100" textFill="WHITE">
                <font>
                   <Font name="Arial Bold" size="14.0" />
                </font>
@@ -305,7 +306,7 @@
                   <Font name="Arial Black" size="16.0" />
                </font>
             </Label>
-            <ImageView fitHeight="18.0" fitWidth="28.0" layoutX="147.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="walletBut" fitHeight="18.0" fitWidth="28.0" layoutX="147.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@add.png" />
                </image>
@@ -516,5 +517,70 @@
             <Image url="@arrow.png" />
          </image>
       </ImageView>
+      <AnchorPane fx:id="ViewWallet" layoutX="-1.0" opacity="0.0" prefHeight="700.0" prefWidth="1150.0" visible="false">
+         <children>
+            <Rectangle fill="#000000cf" height="700.0" stroke="#ffffff00" strokeType="INSIDE" width="1150.0" />
+            <AnchorPane layoutX="427.0" layoutY="156.0">
+               <children>
+                  <AnchorPane fx:id="DepositField" layoutY="61.0">
+                     <children>
+                        <AnchorPane>
+                           <children>
+                              <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#1f93ff00" height="236.0" stroke="#90fff8" strokeType="INSIDE" width="278.0" />
+                              <Label layoutX="17.0" layoutY="21.0" text="Amount" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cooper Black" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="AmountField" layoutX="17.0" layoutY="57.0" prefHeight="38.0" prefWidth="238.0" />
+                              <Label layoutX="21.0" layoutY="127.0" text="Account ID" textFill="WHITE">
+                                 <font>
+                                    <Font name="Cooper Black" size="13.0" />
+                                 </font>
+                              </Label>
+                              <TextField fx:id="AccountIdField" layoutX="17.0" layoutY="164.0" prefHeight="38.0" prefWidth="238.0" />
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="DepositBut" layoutX="14.0" layoutY="263.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="38.0" stroke="#90fff8" strokeType="INSIDE" width="120.0" />
+                              <Label layoutX="30.0" layoutY="9.0" text="Deposit" textFill="#90fff8">
+                                 <font>
+                                    <Font name="Cooper Black" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <AnchorPane fx:id="WithdrawBut" layoutX="139.0" layoutY="263.0">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#1f93ff00" height="38.0" stroke="#90fff8" strokeType="INSIDE" width="120.0" />
+                              <Label layoutX="20.0" layoutY="9.0" text="Withdraw" textFill="#90fff8">
+                                 <font>
+                                    <Font name="Cooper Black" size="15.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </AnchorPane>
+                        <Label fx:id="InvalidLabel" layoutX="20.0" layoutY="236.0" opacity="0.0" text="Invalid Input" textFill="#ff6d6d">
+                           <font>
+                              <Font name="Arial Bold" size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </AnchorPane>
+                  <ImageView fitHeight="109.0" fitWidth="106.0" layoutX="86.0" layoutY="-11.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@dollar.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <ImageView fx:id="ExitWallet" fitHeight="40.0" fitWidth="40.0" layoutX="744.0" layoutY="92.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@logout.png" />
+               </image>
+            </ImageView>
+         </children>
+      </AnchorPane>
    </children>
 </AnchorPane>

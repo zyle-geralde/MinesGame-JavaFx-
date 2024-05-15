@@ -10,4 +10,10 @@ module com.example.projjavafxoop2 {
 
     opens com.example.projjavafxoop2 to javafx.fxml;
     exports com.example.projjavafxoop2;
+    exports com.example.projjavafxoop2.LogSignPackage;
+    opens com.example.projjavafxoop2.LogSignPackage to javafx.fxml;
+    exports com.example.projjavafxoop2.DashBoardPackage;
+    opens com.example.projjavafxoop2.DashBoardPackage to javafx.fxml;
+    exports com.example.projjavafxoop2.MineGamePackage;
+    opens com.example.projjavafxoop2.MineGamePackage to javafx.fxml;
 }

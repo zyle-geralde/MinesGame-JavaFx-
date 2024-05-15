@@ -1,0 +1,265 @@
+package com.example.projjavafxoop2.DashBoardPackage;
+
+import com.almasb.fxgl.entity.component.Component;
+import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
+import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
+import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
+import com.example.projjavafxoop2.WalletClass;
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
+import javafx.scene.shape.Shape;
+import javafx.stage.Stage;
+
+import java.util.ArrayList;
+import java.util.Objects;
+
+public class DashBoardSample{
+
+    int userid;
+    String username;
+
+    int walletid;
+
+    double balance;
+
+    WalletClass userwallet = null;
+
+    public DashBoardSample(int userid,String username,int walletid,double balance){
+        this.username = username;
+        this.userid = userid;
+        this.walletid = walletid;
+        this.balance = balance;
+        userwallet = new WalletClass(balance,walletid,userid,username);
+    }
+    public DashBoardSample(WalletClass userwallet){
+        this.userwallet = userwallet;
+    }
+    public DashBoardSample(){
+
+    }
+
+    ArrayList<Shape> btnsidbar = new ArrayList<>();
+    ArrayList<AnchorPane> anchorGameCov = new ArrayList<>();
+    ArrayList<ImageView> imgArrow = new ArrayList<>();
+    Label amountLabel = null;
+
+    public void refresh(Stage stage) throws Exception {
+        Scene scene = stage.getScene();
+
+        amountLabel = (Label) scene.lookup("#amountLabel");
+        amountLabel.setText(String.format("%.2f",userwallet.getBalance()));
+
+        Thread curvecornerthread = new Thread(new CurveCornerThread(scene));
+        curvecornerthread.start();
+
+        AnchorPane sideBar = (AnchorPane) scene.lookup("#sideBar");
+        Thread dsp1 = new Thread(new DisplayAnimateThread(sideBar,0,0.2,0.3));
+        dsp1.start();
+
+        AnchorPane moneyBar = (AnchorPane) scene.lookup("#moneyBar");
+        Thread dsp2 = new Thread(new DisplayAnimateThread(moneyBar,1,0.3,0.3));
+        dsp2.start();
+
+        AnchorPane bannerBar = (AnchorPane) scene.lookup("#bannerBar");
+        Thread dsp3 = new Thread(new DisplayAnimateThread(bannerBar,1,0.4,0.3));
+        dsp3.start();
+
+        AnchorPane SlotMachBar = (AnchorPane) scene.lookup("#SlotMachBar");
+        AnchorPane cardsbar = (AnchorPane) scene.lookup("#cardsbar");
+        AnchorPane colorgamebar = (AnchorPane) scene.lookup("#colorgamebar");
+        AnchorPane minegamebar = (AnchorPane) scene.lookup("#minegamebar");
+
+        ImageView Point1 = (ImageView) scene.lookup("#Point1");
+        ImageView Point2 = (ImageView) scene.lookup("#Point2");
+        ImageView Point3 = (ImageView) scene.lookup("#Point3");
+        ImageView Point4 = (ImageView) scene.lookup("#Point4");
+
+        imgArrow.add(Point1);
+        imgArrow.add(Point2);
+        imgArrow.add(Point3);
+        imgArrow.add(Point4);
+
+        anchorGameCov.add(SlotMachBar);
+        anchorGameCov.add(cardsbar);
+        anchorGameCov.add(colorgamebar);
+        anchorGameCov.add(minegamebar);
+
+        double durdelay = 0.9;
+
+        for(AnchorPane anch: anchorGameCov){
+            GameButtonClass gba = new GameButtonClass(durdelay,0.1,anch);
+            gba.getAnimate(1);
+            durdelay+=0.1;
+            anch.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Thread hoversound = new Thread(new ClickSoundThread());
+                    hoversound.start();
+                    int indx = anchorGameCov.indexOf(anch);
+                    gba.actionEntered(imgArrow.get(indx));
+                }
+            });
+            anch.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    int indx = anchorGameCov.indexOf(anch);
+                    gba.actionExit(imgArrow.get(indx));
+                }
+            });
+        }
+
+        btnsidbar.add((Shape) scene.lookup("#Rect1"));
+        btnsidbar.add((Shape) scene.lookup("#Rect2"));
+        btnsidbar.add((Shape) scene.lookup("#Rect3"));
+        btnsidbar.add((Shape) scene.lookup("#Rect4"));
+        btnsidbar.add((Shape) scene.lookup("#Rect5"));
+
+        for(Shape btnsb: btnsidbar){
+            GameButtonClass shapbut = new GameButtonClass(0.1);
+            btnsb.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    Thread hoversound = new Thread(new ClickSoundThread());
+                    hoversound.start();
+                    shapbut.actionEntered(btnsb);}
+            });
+
+            btnsb.setOnMouseExited(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent mouseEvent) {
+                    shapbut.actionExit(btnsb);
+                }
+            });
+        }
+
+        AnchorPane ViewWallet  = (AnchorPane) scene.lookup("#ViewWallet");
+        ImageView walletBut = (ImageView) scene.lookup("#walletBut");
+        walletBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                OpenWallet opn = new OpenWallet(ViewWallet);
+                opn.onClickfunc();
+            }
+        });
+
+        walletBut.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread hoversound = new Thread(new ClickSoundThread());
+                hoversound.start();
+            }
+        });
+
+        ImageView ExitWallet = (ImageView) scene.lookup("#ExitWallet");
+        AnchorPane DepositBut = (AnchorPane) scene.lookup("#DepositBut");
+        AnchorPane WithdrawBut = (AnchorPane) scene.lookup("#WithdrawBut");
+        TextField AmountField = (TextField) scene.lookup("#AmountField");
+        TextField AccountIdField = (TextField) scene.lookup("#AccountIdField");
+        Label InvalidLabel= (Label) scene.lookup("#InvalidLabel");
+
+        ExitWallet.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                ExitWalletClass ext = new ExitWalletClass(ExitWallet,DepositBut,WithdrawBut,AmountField,AccountIdField,InvalidLabel,ViewWallet);
+                ext.onClickfunc();
+            }
+        });
+
+        ExitWallet.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread hoversound = new Thread(new ClickSoundThread());
+                hoversound.start();
+            }
+        });
+
+
+        DepostWithdrawClass dpwth = new DepostWithdrawClass(ExitWallet,DepositBut,WithdrawBut,AmountField,AccountIdField,InvalidLabel,ViewWallet,userwallet,amountLabel);
+        DepositBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                dpwth.onClickfunc(0);
+            }
+        });
+
+        DepositBut.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread hoversound = new Thread(new ClickSoundThread());
+                hoversound.start();
+            }
+        });
+
+        WithdrawBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                dpwth.onClickfunc(1);
+            }
+        });
+
+        WithdrawBut.setOnMouseEntered(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread hoversound = new Thread(new ClickSoundThread());
+                hoversound.start();
+            }
+        });
+
+        Shape LogOut = (Shape) scene.lookup("#Rect5");
+        LogOut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                try {
+                    LogInSignUpApplication.AppInstance.close();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        Shape MinesBut = (Shape) scene.lookup("#Rect4");
+        MinesBut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                MinegameApplication mineg = new MinegameApplication();
+                try {
+                    mineg.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        minegamebar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                MinegameApplication mineg = new MinegameApplication();
+                try {
+                    mineg.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+    }
+}
