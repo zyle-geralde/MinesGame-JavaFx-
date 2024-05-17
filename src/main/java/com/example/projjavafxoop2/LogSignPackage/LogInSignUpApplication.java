@@ -40,7 +40,7 @@ public class LogInSignUpApplication extends Application {
 
         MediaView mediaView = (MediaView) scene.lookup("#IntroPlay");
 
-        String mediaSource = getClass().getResource("/com/example/projjavafxoop2/IntroSec.mp4").toString();
+        String mediaSource = getClass().getResource("/com/example/projjavafxoop2/mpfiles/IntroSec.mp4").toString();
 
         Media media = new Media(mediaSource);
         MediaPlayer mediaPlayer = new MediaPlayer(media);
@@ -57,7 +57,7 @@ public class LogInSignUpApplication extends Application {
             mediaView.setVisible(false);
 
             if (mediaPlayer2 == null) {
-                String mediaSourceview = getClass().getResource("/com/example/projjavafxoop2/BackCover.mp4").toString();
+                String mediaSourceview = getClass().getResource("/com/example/projjavafxoop2/mpfiles/BackCover.mp4").toString();
                 Media mediaView2 = new Media(mediaSourceview);
                 mediaPlayer2 = new MediaPlayer(mediaView2);
 
@@ -83,7 +83,7 @@ public class LogInSignUpApplication extends Application {
                 mediaPlayer.stop(); // Stop the first video
                 mediaView.setOpacity(0);
                 mediaView.setVisible(false);
-                String mediaSourceview = getClass().getResource("/com/example/projjavafxoop2/BackCover.mp4").toString();
+                String mediaSourceview = getClass().getResource("/com/example/projjavafxoop2/mpfiles/BackCover.mp4").toString();
                 Media mediaView2 = new Media(mediaSourceview);
                 mediaPlayer2 = new MediaPlayer(mediaView2);
 

@@ -1,6 +1,5 @@
 package com.example.projjavafxoop2.DashBoardPackage;
 
-import com.almasb.fxgl.entity.component.Component;
 import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
 import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
 import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
@@ -16,7 +15,6 @@ import javafx.scene.shape.Shape;
 import javafx.stage.Stage;
 
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class DashBoardSample{
 
@@ -261,5 +259,6 @@ public class DashBoardSample{
                 }
             }
         });
+
     }
 }

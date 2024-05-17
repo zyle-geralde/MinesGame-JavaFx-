@@ -23,7 +23,7 @@ public class ValidChecker implements Runnable {
     @Override
     public void run() {
         try {
-
+            System.out.println("Valid Check");
             Double.parseDouble(field.getText().toString());
 
             if(Double.parseDouble(field.getText().toString()) < min || Double.parseDouble(field.getText().toString()) > max){
