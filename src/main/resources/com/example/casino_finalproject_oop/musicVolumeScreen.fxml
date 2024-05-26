@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="volumeAnchor" prefHeight="150.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino_finalproject_oop.MusicVolumeScreenController">
+    <VBox alignment="CENTER" layoutX="152.0" layoutY="11.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="129.0" prefWidth="304.0" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
+        <Slider fx:id="volumeSlider" max="100.0" min="0.0" prefHeight="98.0" prefWidth="289.0" VBox.vgrow="NEVER" />
+    </VBox>
+
+</AnchorPane>

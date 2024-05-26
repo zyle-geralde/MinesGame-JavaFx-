@@ -1,0 +1,51 @@
+.alert {
+    -fx-font-family: "Breaking Rules";
+    -fx-font-size: 18px;
+}
+
+.dialog-pane {
+    -fx-background-color: linear-gradient(to bottom, #32CD32, #FFFF00);
+    -fx-pref-width: 400px;
+    -fx-pref-height: 250px;
+    -fx-alignment: center;
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to bottom, #32CD32, #228B22);
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+    -fx-padding: 10;
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: black;
+    -fx-alignment: center;
+    -fx-padding: 20;
+    -fx-wrap-text: true;
+    -fx-text-alignment: center;
+}
+
+.dialog-pane .button-bar {
+    -fx-background-color: linear-gradient(to bottom, #228B22, #32CD32);
+    -fx-alignment: center;
+}
+
+.dialog-pane .button {
+    -fx-background-color: linear-gradient(to bottom, #32CD32, #FFFF00);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .graphic-container {
+    -fx-padding: 0;
+    -fx-opacity: 0;
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: center;
+}

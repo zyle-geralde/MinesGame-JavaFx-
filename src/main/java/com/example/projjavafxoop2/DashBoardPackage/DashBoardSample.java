@@ -1,5 +1,6 @@
 package com.example.projjavafxoop2.DashBoardPackage;
 
+import com.example.casino_finalproject_oop.HelloApplication;
 import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
 import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
 import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
@@ -259,6 +260,37 @@ public class DashBoardSample{
                 }
             }
         });
+
+        SlotMachBar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplication slotmach = new HelloApplication();
+                try {
+                    slotmach.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        Shape slotbut = (Shape) scene.lookup("#Rect1");
+        slotbut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplication slotmach = new HelloApplication();
+                try {
+                    slotmach.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+
 
     }
 }

@@ -43,4 +43,7 @@ public class WalletClass {
         this.balance-=amount;
 
     }
+    public void setBalance(double bal){
+        this.balance = bal;
+    }
 }

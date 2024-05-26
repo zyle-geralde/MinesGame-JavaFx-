@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="myContainer" prefHeight="700.0" prefWidth="1200.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino_finalproject_oop.SlotMachineController">
+    <children>
+        <Label fx:id="lbl_betAmount" alignment="CENTER" contentDisplay="CENTER" layoutX="827.0" layoutY="591.0" prefHeight="23.0" prefWidth="59.0" text="0" textFill="WHITE">
+            <font>
+                <Font name="Britannic Bold" size="24.0" />
+            </font>
+        </Label>
+          <Label fx:id="lbl_cashAmount" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="1038.0" layoutY="33.0" prefHeight="36.0" prefWidth="80.0" text="1000" textFill="WHITE">
+              <font>
+                  <Font name="Britannic Bold" size="23.0" />
+              </font>
+          </Label>
+      <Label fx:id="lbl_coinsAmount" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="879.0" layoutY="38.0" prefHeight="25.0" prefWidth="57.0" text="1000" textFill="WHITE">
+          <font>
+              <Font name="Britannic Bold" size="23.0" />
+          </font>
+      </Label>
+
+        <HBox fx:id="slotMachine" alignment="CENTER" layoutX="269.0" layoutY="255.0" prefHeight="184.0" prefWidth="684.0">
+            <children>
+                <ImageView fx:id="reel1" fitHeight="145.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets left="7.0" right="5.0" />
+                    </HBox.margin>
+                </ImageView>
+                <ImageView fx:id="reel2" fitHeight="145.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets left="80.0" right="80.0" />
+                    </HBox.margin>
+                </ImageView>
+                <ImageView fx:id="reel3" fitHeight="145.0" fitWidth="145.0" pickOnBounds="true" preserveRatio="true">
+                    <HBox.margin>
+                        <Insets left="5.0" right="10.0" />
+                    </HBox.margin>
+                </ImageView>
+            </children>
+        </HBox>
+          <Label fx:id="lbl_playername" alignment="CENTER" contentDisplay="CENTER" layoutX="147.0" layoutY="79.0" prefHeight="24.0" prefWidth="126.0" text="Player 1">
+              <font>
+                  <Font name="Britannic Bold" size="24.0" />
+              </font>
+          </Label>
+      <ImageView fx:id="img_spinIcon" fitHeight="118.0" fitWidth="169.0" layoutX="529.0" layoutY="529.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/spinIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_addIcon" fitHeight="40.0" fitWidth="40.0" layoutX="721.0" layoutY="570.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/addIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_subIcon" fitHeight="40.0" fitWidth="40.0" layoutX="954.0" layoutY="569.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/subtractIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_qMarkIcon" fitHeight="58.0" fitWidth="53.0" layoutX="1035.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/qmarkIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_musicIcon" fitHeight="58.0" fitWidth="53.0" layoutX="1107.0" layoutY="596.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/musicIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_betMaxIcon" fitHeight="120.0" fitWidth="240.0" layoutX="257.0" layoutY="528.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/betMaxIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_coinsIcon" fitHeight="36.0" fitWidth="25.0" layoutX="942.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/addIcon.png" />
+         </image>
+      </ImageView>
+      <ImageView fx:id="img_moneyIcon" fitHeight="30.0" fitWidth="25.0" layoutX="1123.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/addIcon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_spin" layoutX="531.0" layoutY="530.0" mnemonicParsing="false" onAction="#spinBtnPressed" opacity="0.0" prefHeight="113.0" prefWidth="169.0" text="Spin" />
+      <Button fx:id="btn_betMinus" layoutX="957.0" layoutY="575.0" mnemonicParsing="false" onAction="#betMinusBtnPressed" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="-" />
+          <Button fx:id="btn_betPlus" alignment="CENTER" contentDisplay="CENTER" layoutX="727.0" layoutY="575.0" mnemonicParsing="false" onAction="#betPlusBtnPressed" opacity="0.0" prefHeight="30.0" prefWidth="30.0" text="+" />
+          <Button fx:id="btn_betMax" layoutX="273.0" layoutY="558.0" mnemonicParsing="false" onAction="#betMaxBtnPressed" opacity="0.0" prefHeight="58.0" prefWidth="205.0" text="Bet Max" />
+      <Button fx:id="coinsIcon" layoutX="942.0" layoutY="39.0" mnemonicParsing="false" onAction="#coinsIconBtnPressed" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="C+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="moneyIcon" layoutX="1123.0" layoutY="39.0" mnemonicParsing="false" onAction="#moneyIconBtnPressed" opacity="0.0" prefHeight="25.0" prefWidth="25.0" text="M+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="btn_qMark" layoutX="1037.0" layoutY="600.0" mnemonicParsing="false" onAction="#qMarkBtnPressed" opacity="0.0" prefHeight="47.0" prefWidth="47.0" text="?" />
+      <ImageView fx:id="homebutdash" fitHeight="58.0" fitWidth="59.0" layoutX="26.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="btn_music" layoutX="1109.0" layoutY="600.0" mnemonicParsing="false" onAction="#musicBtnPressed" opacity="0.0" prefHeight="47.0" prefWidth="47.0" text="M" />
+
+
+    </children>
+</AnchorPane>

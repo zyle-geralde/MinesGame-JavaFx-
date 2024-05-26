@@ -1,0 +1,51 @@
+.alert {
+    -fx-font-family: "Breaking Rules";
+    -fx-font-size: 18px;
+}
+
+.dialog-pane {
+    -fx-background-color: linear-gradient(to bottom, #ffcc00, #ff6600);
+    -fx-pref-width: 400px;
+    -fx-pref-height: 250px;
+    -fx-alignment: center; /* Ensure dialog content is centered */
+}
+
+.dialog-pane .header-panel {
+    -fx-background-color: linear-gradient(to bottom, #ff6600, #ff0000);
+    -fx-font-size: 22px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: center; /* Center the header text */
+    -fx-padding: 10; /* Add padding to the header */
+}
+
+.dialog-pane .content.label {
+    -fx-text-fill: black;
+    -fx-alignment: center; /* Center the content text */
+    -fx-padding: 20; /* Add padding to the content */
+    -fx-wrap-text: true; /* Ensure text wraps within the dialog */
+    -fx-text-alignment: center; /* Center align the text */
+}
+
+.dialog-pane .button-bar {
+    -fx-background-color: linear-gradient(to bottom, #ff0000, #ff6600);
+    -fx-alignment: center; /* Center the button bar */
+}
+
+.dialog-pane .button {
+    -fx-background-color: linear-gradient(to bottom, #ffcc00, #ff6600);
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+}
+
+.dialog-pane .graphic-container {
+    -fx-padding: 0;
+    -fx-opacity: 0; /* Hides the icon */
+}
+
+.dialog-pane .header-panel .label {
+    -fx-font-size: 20px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: center; /* Ensure header label is centered */
+}

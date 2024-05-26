@@ -16,4 +16,8 @@ module com.example.projjavafxoop2 {
     opens com.example.projjavafxoop2.DashBoardPackage to javafx.fxml;
     exports com.example.projjavafxoop2.MineGamePackage;
     opens com.example.projjavafxoop2.MineGamePackage to javafx.fxml;
+
+    exports com.example.casino_finalproject_oop to javafx.graphics;
+
+    opens com.example.casino_finalproject_oop to javafx.fxml;
 }

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane fx:id="moneyAnchorPane" prefHeight="500.0" prefWidth="350.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino_finalproject_oop.MoneyController">
+   <children>
+      <Label fx:id="currCashLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="101.0" layoutY="34.0" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="currCoinsLabel" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="194.0" layoutY="33.0" prefHeight="23.0" prefWidth="64.0" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font></Label>
+      <ImageView fx:id="img_convertIcon" fitHeight="47.0" fitWidth="115.0" layoutX="117.0" layoutY="415.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../images/convertIcon.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="btn_convert" layoutX="125.0" layoutY="419.0" mnemonicParsing="false" onAction="#convertBtnPressed" opacity="0.0" text="CONVERT" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="18.0" />
+         </font>
+      </Button>
+      <Label fx:id="TempHolderOne" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="67.0" layoutY="368.0" prefHeight="22.0" prefWidth="80.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font></Label>
+      <Label fx:id="TempHolderTwo" alignment="CENTER_RIGHT" contentDisplay="RIGHT" layoutX="216.0" layoutY="369.0" prefHeight="22.0" prefWidth="80.0" text="0" textFill="WHITE">
+         <font>
+            <Font name="Britannic Bold" size="20.0" />
+         </font></Label>
+      <Button fx:id="fiveMinusButton" layoutX="267.0" layoutY="139.0" mnemonicParsing="false" onAction="#fiveMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="fivePlusButton" layoutX="245.0" layoutY="139.0" mnemonicParsing="false" onAction="#fivePlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="fifteenPlusButton" layoutX="245.0" layoutY="172.0" mnemonicParsing="false" onAction="#fifteenPlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="fifteenMinusButton" layoutX="267.0" layoutY="172.0" mnemonicParsing="false" onAction="#fifteenMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="thirtyPlusButton" layoutX="245.0" layoutY="205.0" mnemonicParsing="false" onAction="#thirtyPlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="thirtyMinusButton" layoutX="267.0" layoutY="205.0" mnemonicParsing="false" onAction="#thirtyMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="sixtyPlusButton" layoutX="245.0" layoutY="238.0" mnemonicParsing="false" onAction="#sixtyPlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="sixtyMinusButton" layoutX="267.0" layoutY="238.0" mnemonicParsing="false" onAction="#sixtyMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="twoHCPlusButton" layoutX="245.0" layoutY="272.0" mnemonicParsing="false" onAction="#twoHCPlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="twoHCMinusButton" layoutX="267.0" layoutY="272.0" mnemonicParsing="false" onAction="#twoHCMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="fiveHCPlusButton" layoutX="245.0" layoutY="302.0" mnemonicParsing="false" onAction="#fiveHCPlusBtnPressed" text="+">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+      <Button fx:id="fiveHCMinusButton" layoutX="267.0" layoutY="302.0" mnemonicParsing="false" onAction="#fiveHCMinusBtnPressed" text="-">
+         <font>
+            <Font size="8.0" />
+         </font></Button>
+   </children>
+</AnchorPane>
