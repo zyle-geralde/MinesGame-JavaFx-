@@ -1,0 +1,17 @@
+.game-text {
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #FFD700, #FFA500);
+    -fx-stroke: #B8860B;
+    -fx-stroke-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.75), 5, 0.5, 0, 1);
+}
+
+
+.win-text {
+    -fx-text-fill: linear-gradient(from 0% 0% to 100% 100%, #FFD700, #FFA500);
+    -fx-stroke: #B8860B;
+    -fx-stroke-width: 1.5px;
+    -fx-effect:
+            dropshadow(gaussian, rgba(0, 0, 0, 0.3), 4, 0.7, 0, 1),
+            dropshadow(gaussian, rgba(255, 215, 0, 0.7), 20, 0.7, 0, 0),
+            innershadow(gaussian, rgba(255, 255, 255, 0.5), 5, 0.5, 0, 1);
+}

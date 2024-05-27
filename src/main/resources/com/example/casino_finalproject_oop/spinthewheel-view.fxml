@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane fx:id="anch" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.casino_finalproject_oop.SpinthewheelView">
+   <children>
+      <ImageView fx:id="BacktoDashColor" fitHeight="36.0" fitWidth="48.0" layoutX="21.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@home%20(1).png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

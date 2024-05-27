@@ -1,6 +1,7 @@
 package com.example.projjavafxoop2.DashBoardPackage;
 
 import com.example.casino_finalproject_oop.HelloApplication;
+import com.example.casino_finalproject_oop.HelloApplicationV2;
 import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
 import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
 import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
@@ -290,7 +291,35 @@ public class DashBoardSample{
             }
         });
 
+        colorgamebar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplicationV2 colorgame= new HelloApplicationV2();
+                try {
+                    colorgame.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
 
-
+        Shape colorgbot = (Shape) scene.lookup("#Rect3");
+        colorgbot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplicationV2 colorgame= new HelloApplicationV2();
+                try {
+                    colorgame.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
     }
+
+
 }
