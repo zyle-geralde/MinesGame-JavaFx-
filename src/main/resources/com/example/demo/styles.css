@@ -1,0 +1,40 @@
+.rectangle_glow {
+    -fx-effect: dropshadow(gaussian, #ffd438, 50, 0.5, 0, 0);
+
+}
+
+.betField {
+    -fx-text-fill: white; /* Set text color to white */
+    -fx-font-size: 15pt; /* Set font size to 10pt */
+    -fx-background-color: transparent; /* Make background transparent */
+    -fx-border-color: transparent; /* Make border transparent */
+    -fx-font-weight: bold;
+    -fx-font-family: Fantasy;
+}
+
+.bet-input {
+    -fx-background-color: transparent;
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-border-color: transparent;
+    -fx-font-weight: bold;
+    -fx-text-fill: yellow; /* Ensure text is visible */
+    -fx-font-family: "fantasy"; /* Set font family to fantasy */
+    -fx-font-size: 20; /* Set font size to 20 */
+}
+
+.randomPlaybtn {
+    -fx-effect: dropshadow(gaussian, #ffd438, 10, 1, 0, 0);
+    -fx-background-color: transparent; /* Make background transparent */
+    -fx-border-color: transparent; /* Make border transparent */
+}
+
+.pointsLabel {
+    -fx-font-size: 30px;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-font-family: Fantasy;
+}
+
+
+

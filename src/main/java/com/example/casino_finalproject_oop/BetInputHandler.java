@@ -111,10 +111,10 @@ public class BetInputHandler {
         btnconfirm.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                if(HelloApplicationV2.count >= 3 && lblAmount.getText().isEmpty()) {
+                /*if(HelloApplicationV2.count >= 3 && lblAmount.getText().isEmpty()) {
                     System.out.println("Maximum of 3 tile bets only!");
-                    HelloApplicationV2.displayMessage("Maximum of 3 tile bets only!", grid);
-                } else {
+                    HelloApplicationV2.displayMessage("Maximum of 3 tile bets only!", grid);*/
+                if(true){
                     try{
                         String amount = bet_amount.getText();
                         String amount1 = lblAmount.getText();

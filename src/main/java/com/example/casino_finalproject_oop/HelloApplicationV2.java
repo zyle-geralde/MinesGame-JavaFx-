@@ -40,9 +40,12 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.logging.Handler;
 
 public class HelloApplicationV2 {
     public static final int NUM_BLOCK = 3;
+
+    public static final int num_block = 1;
     public static int total_winnings = 0;
     public static int total_bet = 0;
     public static volatile int count = 0;
@@ -318,7 +321,45 @@ public class HelloApplicationV2 {
         scaleTransition.setAutoReverse(true);
         scaleTransition.setCycleCount(2);
 
-        roll.setOnAction(e -> {
+        roll.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                clickSound.play();
+                scaleTransition.setNode(rollBTN);
+                scaleTransition.play();
+                for (BetInputHandler handler : handlers) {
+                    if (handler.isTokenVisible()) {
+                        isAnyTokenVisible = true;
+                        break;
+                    }
+                }
+                if(total_bet > balance) {
+                    displayMessage("You don't have enough coins!", grid);
+                } else {
+                    if(finishedAnimations[0] == 0) {
+                        balance -= total_bet;
+                        txtBalance.setText(balance + "$");
+//                    decrementBalance(total_bet);
+                        if (isAnyTokenVisible) {
+                            // Roll action logic
+                            for (int i = 0; i < num_block; i++) {
+                                //threads.get(i).start();
+                                Runnable r = new ThreadBlock(blockList, i);
+                                Thread thr = new Thread(r);
+                                //threads.add(new Thread(r));
+                                thr.start();
+
+                            }
+                        } else {
+                            displayMessage("Put your chips down, you bold player!", grid);
+                        }
+                    } else {
+                        displayMessage("Start a new game instead", grid);
+                    }
+                }
+            }
+        });
+        /*roll.setOnAction(e -> {
             clickSound.play();
             scaleTransition.setNode(rollBTN);
             scaleTransition.play();
@@ -347,7 +388,8 @@ public class HelloApplicationV2 {
                         displayMessage("Start a new game instead", grid);
                     }
                 }
-        });
+            }
+        );*/
 
         clear.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -502,11 +544,33 @@ public class HelloApplicationV2 {
 
         if(!flag) {
             System.out.println("No winnings!");
-            Thread.sleep(500);
-            showWinnings(0);
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(1000), // 1000 milliseconds = 1 second
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            showWinnings(0);
+                        }
+                    }
+            ));
+            timeline.setCycleCount(1); // Execute once
+            timeline.play();
+            //Thread.sleep(1000);
+            //showWinnings(0);
         } else {
-            Thread.sleep(500);
-            showWinnings(total_winnings);
+            //Thread.sleep(1000);
+            Timeline timeline = new Timeline(new KeyFrame(
+                    Duration.millis(1000), // 1000 milliseconds = 1 second
+                    new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            showWinnings(total_winnings);
+                        }
+                    }
+            ));
+            //showWinnings(total_winnings);
+            timeline.setCycleCount(1); // Execute once
+            timeline.play();
         }
         txtTotalBet.setText(Integer.toString(total_bet));
     }
@@ -521,6 +585,7 @@ public class HelloApplicationV2 {
 
     public static void showWinnings(int win) {container.setVisible(false);
 //        mediaPlayer.pause();
+
         if(win <= 0) {
             mpNoWin.play();
         } else {

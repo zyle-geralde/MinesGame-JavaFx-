@@ -20,4 +20,7 @@ module com.example.projjavafxoop2 {
     exports com.example.casino_finalproject_oop to javafx.graphics;
 
     opens com.example.casino_finalproject_oop to javafx.fxml;
+
+    opens com.example.demo to javafx.graphics;
+    exports com.example.demo;
 }

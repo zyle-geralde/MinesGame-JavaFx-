@@ -2,6 +2,7 @@ package com.example.projjavafxoop2.DashBoardPackage;
 
 import com.example.casino_finalproject_oop.HelloApplication;
 import com.example.casino_finalproject_oop.HelloApplicationV2;
+import com.example.demo.HelloApplicationV3;
 import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
 import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
 import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
@@ -314,6 +315,35 @@ public class DashBoardSample{
                 HelloApplicationV2 colorgame= new HelloApplicationV2();
                 try {
                     colorgame.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        cardsbar.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplicationV3 cardgame= new HelloApplicationV3();
+                try {
+                    cardgame.refresh(stage,userwallet);
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+            }
+        });
+
+        Shape cardbot = (Shape) scene.lookup("#Rect2");
+        cardbot.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                Thread clickefect = new Thread(new ClickSelectedEffectThread());
+                clickefect.start();
+                HelloApplicationV3 cardgame= new HelloApplicationV3();
+                try {
+                    cardgame.refresh(stage,userwallet);
                 } catch (Exception e) {
                     throw new RuntimeException(e);
                 }
