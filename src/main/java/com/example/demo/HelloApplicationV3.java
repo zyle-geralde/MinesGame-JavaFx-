@@ -9,6 +9,7 @@ import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -22,6 +23,9 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
+import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Font;
@@ -30,6 +34,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -55,6 +60,9 @@ public class HelloApplicationV3 {
     private ArrayList<ImageView> Alasclubbut = new ArrayList<>();
     private ArrayList<ImageView> AlasSpeedbut = new ArrayList<>();
     private ArrayList<ImageView> eightspeedbut = new ArrayList<>();
+    MediaPlayer mediaPlayer;
+
+    AudioClip clickSound;
 
     Random random = new Random();
     int [] lastIndex = new int[1];
@@ -242,7 +250,11 @@ public class HelloApplicationV3 {
 
         Button bet_diamondAce = new Button();
         bet_diamondAce.setText("Bet");
-        bet_diamondAce.setOnAction(event -> openBetStage(0));
+        bet_diamondAce.setOnAction(event -> {
+            addMusic("src/main/resources/audio/betCoins.wav");
+            openBetStage(0);
+
+        });
         bet_diamondAce.setPrefSize(100,44);
         bet_diamondAce.setOpacity(0);
         betsp1.getChildren().add(bet_diamondAce);
@@ -316,7 +328,10 @@ public class HelloApplicationV3 {
 
         Button bet_diamondQueen = new Button();
         bet_diamondQueen.setText("Bet");
-        bet_diamondQueen.setOnAction(event -> openBetStage(1));
+        bet_diamondQueen.setOnAction(event -> {
+            addMusic("src/main/resources/audio/betCoins.wav");
+            openBetStage(1);
+        });
         bet_diamondQueen.setPrefSize(100,42);
         bet_diamondQueen.setOpacity(0);
         betsp2.getChildren().add(bet_diamondQueen);
@@ -397,7 +412,10 @@ public class HelloApplicationV3 {
 
         Button bet_diamondKing = new Button();
         bet_diamondKing.setText("Bet");
-        bet_diamondKing.setOnAction(event -> openBetStage(2));
+        bet_diamondKing.setOnAction(event -> {
+            addMusic("src/main/resources/audio/betCoins.wav");
+            openBetStage(2);
+        });
         bet_diamondKing.setPrefSize(100,45);
         bet_diamondKing.setOpacity(0);
         betsp3.getChildren().add(bet_diamondKing);
@@ -478,7 +496,10 @@ public class HelloApplicationV3 {
 
         Button bet_club8 = new Button();
         bet_club8.setText("Bet");
-        bet_club8.setOnAction(event -> openBetStage(3));
+        bet_club8.setOnAction(event -> {
+            addMusic("src/main/resources/audio/betCoins.wav");
+            openBetStage(3);
+        });
         bet_club8.setPrefSize(100,44);
         bet_club8.setOpacity(0);
         betsp4.getChildren().add(bet_club8);
@@ -559,7 +580,9 @@ public class HelloApplicationV3 {
 
         Button bet_heartAce = new Button();
         bet_heartAce.setText("Bet");
-        bet_heartAce.setOnAction(event -> openBetStage(4));
+        bet_heartAce.setOnAction(event -> {
+            addMusic("src/main/resources/audio/betCoins.wav");
+            openBetStage(4);});
         bet_heartAce.setPrefSize(100,44);
         bet_heartAce.setOpacity(0);
         betsp6.getChildren().add(bet_heartAce);
@@ -723,6 +746,9 @@ public class HelloApplicationV3 {
         // Start the timeline
         timeline.play();*/
 
+        addMusic("src/main/resources/audio/old-fashioned-clock-sound-37729.mp3");
+
+
         Timeline timeline = new Timeline(new KeyFrame(Duration.millis(500), event -> {
             Random rand = new Random();
 
@@ -869,6 +895,7 @@ public class HelloApplicationV3 {
                 AlasSpeedbut.get(2).setOpacity(0);
                 eightspeedbut.get(2).setOpacity(1);
             }
+
         }));
 
         timeline3.setCycleCount(10);
@@ -877,6 +904,7 @@ public class HelloApplicationV3 {
         timeline3.setOnFinished(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
+                mediaPlayer.stop();
                 int counter[] = {0,0,0,0,0};
                 for(int loop = 0; loop<3; loop++){
                     if(eightclubbut.get(loop).getOpacity() == 1){
@@ -911,6 +939,7 @@ public class HelloApplicationV3 {
                     } catch (InterruptedException e) {
                         throw new RuntimeException(e);
                     }
+                    addMusic("src/main/resources/com/example/casino_finalproject_oop/win_sound.mp3");
                     pnMain.setDisable(true);
                     Stage winStage = new Stage();
                     winStage.initModality(Modality.APPLICATION_MODAL);
@@ -1180,6 +1209,19 @@ public class HelloApplicationV3 {
             throw new RuntimeException(e);
         }
 
+    }
+
+    @FXML
+    public void addMusic(String fileMusic) {
+        String audioFile = fileMusic;
+        Media sound = new Media(new File(audioFile).toURI().toString());
+
+        mediaPlayer = new MediaPlayer(sound);
+        mediaPlayer.play();
+        mediaPlayer.setOnEndOfMedia(() -> {
+            mediaPlayer.stop();
+            mediaPlayer.dispose();
+        });
     }
 
 }//HelloApplication

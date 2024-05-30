@@ -6,17 +6,28 @@ import com.example.demo.HelloApplicationV3;
 import com.example.projjavafxoop2.LogSignPackage.ClickSoundThread;
 import com.example.projjavafxoop2.LogSignPackage.LogInSignUpApplication;
 import com.example.projjavafxoop2.MineGamePackage.MinegameApplication;
+import com.example.projjavafxoop2.SqlConnect;
 import com.example.projjavafxoop2.WalletClass;
+import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.shape.Shape;
+import javafx.stage.Popup;
 import javafx.stage.Stage;
 
+import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class DashBoardSample{
@@ -28,7 +39,11 @@ public class DashBoardSample{
 
     double balance;
 
+    VBox notificationsContainer;
+
     WalletClass userwallet = null;
+
+    Stage primaryStage = null;
 
     public DashBoardSample(int userid,String username,int walletid,double balance){
         this.username = username;
@@ -191,13 +206,15 @@ public class DashBoardSample{
             public void handle(MouseEvent mouseEvent) {
                 Thread clickefect = new Thread(new ClickSelectedEffectThread());
                 clickefect.start();
-                dpwth.onClickfunc(0);
+                dpwth.onClickfunc(0,userid);
+
             }
         });
 
         DepositBut.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+
                 Thread hoversound = new Thread(new ClickSoundThread());
                 hoversound.start();
             }
@@ -208,7 +225,7 @@ public class DashBoardSample{
             public void handle(MouseEvent mouseEvent) {
                 Thread clickefect = new Thread(new ClickSelectedEffectThread());
                 clickefect.start();
-                dpwth.onClickfunc(1);
+                dpwth.onClickfunc(1,userid);
             }
         });
 
@@ -224,6 +241,15 @@ public class DashBoardSample{
         LogOut.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+                LocalDateTime currentDateTime = LocalDateTime.now();
+
+                // Define the format
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+
+                // Format the current date and time
+                String formattedDateTime = currentDateTime.format(formatter);
+                appendTransaction("User Logged Out "+formattedDateTime,userid);
+
                 Thread clickefect = new Thread(new ClickSelectedEffectThread());
                 clickefect.start();
                 try {
@@ -349,7 +375,61 @@ public class DashBoardSample{
                 }
             }
         });
+
+        ImageView transbut = (ImageView) scene.lookup("#transbut");
+        transbut.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                notificationsContainer = new VBox(20);
+                notificationsContainer.setPadding(new Insets(5));
+                notificationsContainer.setStyle("-fx-background-color: white; -fx-border-color: black;");
+
+                // Create a scroll pane for the notifications container
+                ScrollPane scrollPane = new ScrollPane(notificationsContainer);
+                scrollPane.setPrefSize(700, 450);
+                scrollPane.setFitToWidth(true);
+
+                try (Connection connection = SqlConnect.getConnection();) {
+                    PreparedStatement statement = connection.prepareStatement("SELECT * FROM transaction WHERE userid = ?");
+                    statement.setInt(1,userid);
+                    ResultSet resultSet = statement.executeQuery();
+
+                    while (resultSet.next()) {
+                        Label lbl = new Label(resultSet.getString("transString"));
+                        notificationsContainer.getChildren().add(lbl);
+                    }
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                } catch (Exception e) {
+                    throw new RuntimeException(e);
+                }
+
+
+                if(primaryStage!=null){
+                    primaryStage.close();
+                }
+
+                primaryStage = new Stage();
+                primaryStage.setTitle("Transaction");
+                primaryStage.setWidth(700);
+                primaryStage.setHeight(450);
+                primaryStage.setScene(new Scene(scrollPane,700,450));
+                primaryStage.show();
+            }
+        });
     }
 
+
+    public void appendTransaction(String trans,int uid){
+        try (Connection connection = SqlConnect.getConnection();) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO transaction (userid, transString) VALUES (?, ?)");
+            preparedStatement.setInt(1, uid);
+            preparedStatement.setString(2, trans);
+
+            int rr = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+    }
 
 }

@@ -10,8 +10,11 @@ import javafx.scene.layout.AnchorPane;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class DepostWithdrawClass extends WalletButAbstractClass{
+    int userid;
     public DepostWithdrawClass(ImageView exitWallet, AnchorPane depositBut, AnchorPane withdrawBut, TextField amountField, TextField accountIdField, Label invalidLabel, AnchorPane viewWallet, WalletClass userwallet, Label amountLabel) {
         super(exitWallet, depositBut, withdrawBut, amountField, accountIdField, invalidLabel, viewWallet, userwallet, amountLabel);
     }
@@ -20,7 +23,8 @@ public class DepostWithdrawClass extends WalletButAbstractClass{
     public void onClickfunc(){
 
     }
-    public void onClickfunc(int n) {
+    public void onClickfunc(int n,int uid) {
+        userid = uid;
         if(n == 0){
             depositClick();
         }
@@ -40,6 +44,15 @@ public class DepostWithdrawClass extends WalletButAbstractClass{
                 userwallet.depositAmount(deposithold);
                 amountLabel.setText(String.format("%.2f",userwallet.getBalance()));
                 updateWalletDb();
+
+                LocalDateTime currentDateTime = LocalDateTime.now();
+
+                // Define the format
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+
+                // Format the current date and time
+                String formattedDateTime = currentDateTime.format(formatter);
+                appendTransaction("User Deposited +"+AmountField.getText()+" from AccountId:"+AccountIdField.getText()+"---"+formattedDateTime,userid);
 
                 AmountField.setText("");
                 AccountIdField.setText("");
@@ -66,6 +79,15 @@ public class DepostWithdrawClass extends WalletButAbstractClass{
                     userwallet.withdrawAmount(withdrawhold);
                     amountLabel.setText(String.format("%.2f",userwallet.getBalance()));
                     updateWalletDb();
+
+                    LocalDateTime currentDateTime = LocalDateTime.now();
+
+                    // Define the format
+                    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+
+                    // Format the current date and time
+                    String formattedDateTime = currentDateTime.format(formatter);
+                    appendTransaction("User Withdrawed -"+AmountField.getText()+" to Account Id:"+AccountIdField.getText()+"---"+formattedDateTime,userid);
 
                     AmountField.setText("");
                     AccountIdField.setText("");
@@ -102,6 +124,18 @@ public class DepostWithdrawClass extends WalletButAbstractClass{
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public void appendTransaction(String trans,int uid){
+        try (Connection connection = SqlConnect.getConnection();) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO transaction (userid, transString) VALUES (?, ?)");
+            preparedStatement.setInt(1, uid);
+            preparedStatement.setString(2, trans);
+
+            int rr = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
             throw new RuntimeException(e);
         }
     }

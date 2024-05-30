@@ -90,10 +90,10 @@ public class HelloApplicationV2 {
         balance = (int)Math.floor(wallet.getBalance());
 
         media = new Media(getClass().getResource("/com/example/casino_finalproject_oop/background_music.mp3").toExternalForm());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
-        mediaPlayer.setVolume(0.1);
-        mediaPlayer.play();
+        MediaPlayer mmediaPlayer = new MediaPlayer(media);
+        mmediaPlayer.setCycleCount(MediaPlayer.INDEFINITE);
+        mmediaPlayer.setVolume(1);
+        mmediaPlayer.play();
 
         media1 = new Media(getClass().getResource("/com/example/casino_finalproject_oop/win_sound.mp3").toExternalForm());
         mpWin = new MediaPlayer(media1);
@@ -181,10 +181,12 @@ public class HelloApplicationV2 {
         homebut.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
+
                 UpdatedbWallet(wallet);
                 Thread clickefect = new Thread(new ClickSelectedEffectThread());
                 clickefect.start();
                 DashBoardSample dsh = new DashBoardSample(wallet);
+                mmediaPlayer.stop();
                 try {
                     Parent root = FXMLLoader.load(getClass().getResource("/com/example/projjavafxoop2/DashBoardSample.fxml"));
                     Scene scene = new Scene(root, 1150, 700);

@@ -1,7 +1,5 @@
 package com.example.projjavafxoop2.LogSignPackage;
 
-import com.example.projjavafxoop2.DashBoardPackage.DashBoardSample;
-import com.example.projjavafxoop2.SqlConnect;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -16,11 +14,6 @@ import javafx.stage.Stage;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.MediaView;
-import javafx.util.Duration;
-
-import java.io.File;
-import java.io.IOException;
-import java.sql.*;
 
 public class LogInSignUpApplication extends Application {
 
@@ -136,9 +129,11 @@ public class LogInSignUpApplication extends Application {
             }
         });
 
+
         stage.setScene(scene);
         stage.show();
         AppInstance = stage;
+
 
 
     }

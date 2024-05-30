@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.sql.*;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class ControllActionThread implements Runnable{
     private TextField unametext;
@@ -106,6 +108,15 @@ public class ControllActionThread implements Runnable{
                             ErrorShow.setOpacity(0);
                         });
 
+                        LocalDateTime currentDateTime = LocalDateTime.now();
+
+                        // Define the format
+                        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd-HH-mm-ss");
+
+                        // Format the current date and time
+                        String formattedDateTime = currentDateTime.format(formatter);
+                        appendTransaction("User Logged In "+formattedDateTime,userid);
+
                     }
                 }
             } catch (SQLException e) {
@@ -161,6 +172,7 @@ public class ControllActionThread implements Runnable{
                         PreparedStatement preparedStatement2 = connection.prepareStatement("INSERT INTO wallet (userid) VALUES (?)");
                         preparedStatement2.setInt(1,generatedId);
                         int rowme = preparedStatement2.executeUpdate();
+
                     }
 
                     Platform.runLater(() -> {
@@ -176,6 +188,18 @@ public class ControllActionThread implements Runnable{
             } catch (SQLException e) {
                 e.printStackTrace();
             }
+        }
+    }
+
+    public void appendTransaction(String trans,int uid){
+        try (Connection connection = SqlConnect.getConnection();) {
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO transaction (userid, transString) VALUES (?, ?)");
+            preparedStatement.setInt(1, uid);
+            preparedStatement.setString(2, trans);
+
+            int rr = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
     }
 }
